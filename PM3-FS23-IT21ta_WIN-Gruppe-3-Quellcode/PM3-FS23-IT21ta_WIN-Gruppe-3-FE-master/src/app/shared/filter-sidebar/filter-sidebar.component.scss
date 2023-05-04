@@ -1,0 +1,20 @@
+.filterForm {
+  display: flex;
+  flex-direction: column;
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5em;
+}
+
+.inputContainer > label {
+  font-weight: 700;
+  font-size: 1.5em;
+  margin-bottom: 0.25em;
+}
+
+.lblPriceRange {
+  text-align: right;
+  margin-top: 0;
+}

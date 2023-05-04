@@ -1,0 +1,112 @@
+<div id="header">
+  <span class="title">Generelle Angaben</span>
+</div>
+<div id="content">
+  <div class="formgrid grid">
+    <div class="field col-12 md:col-4">
+      <span class="section-title mb-1">Typ</span>
+      <br>
+      <p-dropdown [(ngModel)]="type"
+                  [options]="selectableObjectTypes"
+                  id="objectType"></p-dropdown>
+    </div>
+    <div class="field col-12 md:col-8">
+      <span class="section-title">Bezeichnung</span>
+      <br>
+      <input [(ngModel)]="name"
+             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+             id="objectName"
+             pInputText
+             type="text"/>
+    </div>
+    <div class="field col-12">
+      <span class="section-title">Adresse</span>
+      <br>
+      <div class="formgroup-inline">
+        <div class="field">
+          <label class=" col-12 mb-2 md:col-2 md:mb-0" for="street">Strasse,</label>
+        </div>
+        <div class="field">
+          <label class=" col-12 mb-2 md:col-2 md:mb-0" for="streetNr">Hausnummer</label>
+        </div>
+        <div class="field">
+          <input [(ngModel)]="street"
+                 autocomplete="street-address"
+                 class="w-8 text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+                 id="street"
+                 pInputText
+                 type="text"/>
+        </div>
+        <div class="field">
+          <input [(ngModel)]="streetNr"
+                 class="w-4 text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+                 id="streetNr"
+                 pInputText
+                 type="text"/>
+        </div>
+      </div>
+    </div>
+    <div class="field col-12">
+      <label class="col-12 mb-2 md:col-2 md:mb-0" for="zip">Postleitzahl</label>
+      <input [(ngModel)]="zipCode"
+             autocomplete="address-line1"
+             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+             id="zip"
+             pInputText
+             type="text"/>
+    </div>
+
+    <div class="field col-12">
+      <label class="col-12 mb-2 md:col-2 md:mb-0" for="place">Ort</label>
+      <input [(ngModel)]="city"
+             autocomplete="country-name"
+             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+             id="place"
+             pInputText
+             type="text"/>
+    </div>
+    <div class="field col-12">
+      <label class="col-12 mb-2 md:col-2 md:mb-0" for="coordinates">Koordinaten (falls keine Adresse vorhanden)</label>
+      <label class="col-12 mb-2 md:col-2 md:mb-0 hidden" for="coordinatesLong">Longitude</label>
+      <input [(ngModel)]="latitude"
+             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+             id="coordinates"
+             pInputText
+             type="text"/>
+      °N
+      <input [(ngModel)]="longitude"
+             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+             id="coordinatesLong"
+             pInputText
+             type="text"/>
+      °E
+    </div>
+  </div>
+
+  <div id="properties-section">
+    <span class="section-title">Eigenschaften</span>
+    <br>
+    <ng-container *ngFor="let item of properties; let index = index">
+      <div class="formgroup-inline">
+        <div class="field">
+          <input [(ngModel)]="properties[index].name" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary" pInputText
+                 type="text"/>
+        </div>
+        <div class="field">
+          <input [(ngModel)]="properties[index].value" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary" pInputText
+                 type="text"/>
+        </div>
+      </div>
+    </ng-container>
+    <p-button (onClick)="addNewProperties()" icon="pi pi-plus-circle"></p-button>
+  </div>
+  <div id="images-section">
+    <span class="section-title">Bilder</span>
+    <br>
+    <p-fileUpload (uploadHandler)="uploadImage($event.files)"
+                  [customUpload]="true"
+                  [multiple]="true"
+                  accept="image/*"
+                  name="previewImage[]"></p-fileUpload>
+  </div>
+</div>

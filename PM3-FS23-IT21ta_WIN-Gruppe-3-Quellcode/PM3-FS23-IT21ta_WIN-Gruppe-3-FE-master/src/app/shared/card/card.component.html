@@ -1,0 +1,27 @@
+<p-card *ngIf="card == null"
+        class="card">
+  <p-progressSpinner class="center"></p-progressSpinner>
+</p-card>
+
+<p-card *ngIf="card != null"
+        [header]="card.title"
+        [subheader]="card.subTitle"
+        (click)="cardClicked($event)"
+        class="card clickable">
+  <ng-template pTemplate="header">
+    <img [src]="card.imagePath" alt="Card" class="card-image"/>
+  </ng-template>
+  <ng-container *ngFor="let cardDescription of card.description">
+    <div>
+      <ng-container *ngIf="cardDescription.iconName == null">
+        <p [ngStyle]="{'font-weight': cardDescription.highlight === true? 'bold': 'normal'}">
+          {{cardDescription.description}}
+        </p>
+      </ng-container>
+      <ng-container *ngIf="cardDescription.iconName != null">
+        <i class="pi" [ngClass]="cardDescription.iconName"> {{cardDescription.description}}</i>
+      </ng-container>
+    </div>
+  </ng-container>
+</p-card>
+

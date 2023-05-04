@@ -1,0 +1,40 @@
+<p-card [style]="{'width': '25rem'}">
+  <form [formGroup]="filterForm" class="filterForm" (ngSubmit)="onFormSubmit()">
+    <div class="inputContainer">
+      <label>Einrichtung</label>
+      <p-multiSelect [options]="facilities" formControlName="selectedFacilityTypes" optionLabel="type" [style]="{'width':'100%'}" [panelStyle]="{'width':'100%'}"></p-multiSelect>
+    </div>
+    <div class="inputContainer">
+      <label>Ort</label>
+      <input type="text" pInputText formControlName="location"/>
+    </div>
+    <div class="inputContainer">
+      <label>Umkreis</label>
+      <div class="p-inputgroup">
+        <input type="number" pInputText formControlName="radius"/>
+        <span class="p-inputgroup-addon">km.</span>
+      </div>
+    </div>
+    <div class="inputContainer">
+      <label>Datum</label>
+      <div class="p-inputgroup">
+        <p-calendar appendTo="body" dateFormat="dd.mm.yy" formControlName="date" [style]="{'width':'100%'}"></p-calendar>
+        <span class="p-inputgroup-addon">
+        <i class="pi pi-calendar"></i>
+      </span>
+      </div>
+    </div>
+    <div class="inputContainer">
+      <label>Preis / h</label>
+      <p class="lblPriceRange">{{getMinSelectedPrice}} Fr. bis {{getMaxSelectedPrice}} Fr.</p>
+      <p-slider formControlName="priceRange" [range]="true"></p-slider>
+    </div>
+    <div class="inputContainer">
+      <label>Weitere Filter</label>
+      <span>TBD</span>
+    </div>
+    <div class="inputContainer">
+      <p-button type="submit" label="Filtern" icon="pi pi-filter-fill"></p-button>
+    </div>
+  </form>
+</p-card>

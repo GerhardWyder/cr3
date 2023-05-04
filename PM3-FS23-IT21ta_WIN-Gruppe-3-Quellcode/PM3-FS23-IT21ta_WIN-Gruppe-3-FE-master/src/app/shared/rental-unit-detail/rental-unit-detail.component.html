@@ -1,0 +1,37 @@
+<p-card *ngIf="rentalUnit == null"
+        class="card" [style]="{'width': '30rem'}">
+  <p-progressSpinner class="center"></p-progressSpinner>
+</p-card>
+
+<p-card *ngIf="rentalUnit != null"
+        [header]="getRentalUnitTitle()"
+        [subheader]="getRentalUnitAddress()"
+        class="card" [style]="{'width': '30rem'}">
+  <ng-template pTemplate="header">
+    <img [src]="'assets/fussballplatz.png'" alt="Card" class="card-image"/>
+  </ng-template>
+  <h3>Infrastruktur</h3>
+  <ng-container *ngFor="let infrastructure of rentalUnit.infrastructures">
+    <div>
+      {{infrastructure.quantity}} x {{infrastructure.name}}
+    </div>
+  </ng-container>
+  <br/>
+  <h3>Inventar</h3>
+  <ng-container *ngFor="let inventory of rentalUnit.inventories">
+    <div>
+      {{inventory.quantity}} x {{inventory.name}}
+    </div>
+  </ng-container>
+  <br/>
+  <h3>Vermieter</h3>
+  <div>
+    {{rentalUnit.unitOwner.firstName}} {{rentalUnit.unitOwner.lastName}}
+  </div>
+  <div>
+    {{rentalUnit.unitOwner.email}}
+  </div>
+  <div>
+    {{rentalUnit.unitOwner.phoneNumber}}
+  </div>
+</p-card>

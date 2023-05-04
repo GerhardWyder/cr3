@@ -1,0 +1,50 @@
+<p>Devel page (playground)</p>
+
+<p-accordion [multiple]="true">
+  <p-accordionTab header="Card Example with Grid">
+    <div class="p-grid" style="display: flex;flex-wrap: wrap; margin: 5px;">
+      <app-card (onClick)="showRentalUnitDetails(rentalUnit)" *ngFor="let rentalUnit of rentalUnits"
+                [rentalUnitData]="rentalUnit">
+      </app-card>
+      <app-card>
+      </app-card>
+    </div>
+  </p-accordionTab>
+
+  <p-accordionTab header="Filter Side Bar Example">
+    <app-filter-sidebar></app-filter-sidebar>
+  </p-accordionTab>
+
+  <p-accordionTab header="Rent Object Detail">
+    <app-rental-unit-detail></app-rental-unit-detail>
+  </p-accordionTab>
+
+  <p-accordionTab header="General Information Step">
+    <app-general-information-step></app-general-information-step>
+  </p-accordionTab>
+
+  <p-accordionTab header="Navigation Sidebar">
+    <app-rental-unit-wizard-navigation-sidebar></app-rental-unit-wizard-navigation-sidebar>
+  </p-accordionTab>
+
+  <p-accordionTab header="Create Rental Unit Wizard">
+    <app-create-rental-unit-wizard></app-create-rental-unit-wizard>
+  </p-accordionTab>
+
+  <p-accordionTab header="Rental Unit Detail">
+    <app-rental-unit-detail [rentalUnit]="rentalUnits[0]"></app-rental-unit-detail>
+    <h2>Empty rental-unit-detail</h2>
+    <app-rental-unit-detail></app-rental-unit-detail>
+  </p-accordionTab>
+
+  <p-accordionTab header="Rent-Object-Calendar">
+    <app-rent-object-calendar></app-rent-object-calendar>
+  </p-accordionTab>
+
+  <p-accordionTab header="Booking-Cost">
+    <app-booking-costs></app-booking-costs>
+  </p-accordionTab>
+</p-accordion>
+
+
+

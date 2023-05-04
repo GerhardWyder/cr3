@@ -1,0 +1,13 @@
+<div class="grid">
+  <div class="col-3">
+    <app-filter-sidebar></app-filter-sidebar>
+  </div>
+  <div class="col-9">
+    <div class="p-grid" style="display: flex;flex-wrap: wrap; margin: 5px;">
+      <app-card (onClick)="openDetailView(rentalUnit)"
+                *ngFor="let rentalUnit of rentalUnits"
+                [rentalUnitData]="rentalUnit">
+      </app-card>
+    </div>
+  </div>
+</div>

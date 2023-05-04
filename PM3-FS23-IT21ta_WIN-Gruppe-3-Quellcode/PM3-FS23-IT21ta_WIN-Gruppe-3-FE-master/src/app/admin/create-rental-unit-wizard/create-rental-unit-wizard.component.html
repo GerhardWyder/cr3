@@ -1,0 +1,19 @@
+<div class="grid">
+  <div class="col-3">
+    <app-rental-unit-wizard-navigation-sidebar
+      [title]="'Einrichtung erfassen'"
+      [buttonText]="'Einrichtung eröffnen'"
+      [activeTab]="activeTab"
+      (activeTabChanged)="activeTabChangedHandler($event)"
+      (onButtonClick)="createRentalUnit()"
+    >
+    </app-rental-unit-wizard-navigation-sidebar>
+  </div>
+  <div class="col-9">
+    <p-card [ngSwitch]="activeTab">
+      <app-general-information-step *ngSwitchCase="'general'"></app-general-information-step>
+      <div *ngSwitchCase="'additionalBookings'">Replace with wizard for "Dazubuchbares"</div>
+      <div *ngSwitchCase="'blockedSlots'">Replace with wizard for "Gesperrte Zeitslots"</div>
+    </p-card>
+  </div>
+</div>

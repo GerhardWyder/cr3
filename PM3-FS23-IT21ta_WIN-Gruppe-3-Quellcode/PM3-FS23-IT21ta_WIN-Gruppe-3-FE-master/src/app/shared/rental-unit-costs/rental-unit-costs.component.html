@@ -1,0 +1,47 @@
+<p-card *ngIf="rentalUnitCosts == null">
+  <p-progressSpinner class="center"></p-progressSpinner>
+</p-card>
+
+<p-card *ngIf="rentalUnitCosts != null">
+  <div class="column-container">
+    <div class="column">
+      <form [formGroup]="datesForm">
+        <div class="date-input-container">
+          <label>Von:</label>
+          <p-calendar [showIcon]="true" [showTime]="true" dateFormat="dd.mm.yy"
+                      formControlName="startDate"></p-calendar>
+        </div>
+        <div class="date-input-container">
+          <label>Bis:</label>
+          <p-calendar dateFormat="dd.mm.yy" formControlName="endDate" [showTime]="true" [showIcon]="true"></p-calendar>
+        </div>
+      </form>
+    </div>
+    <div class="column">
+      <label>Kosten:</label>
+      <div class="row">
+        <ul class="price-detail-list">
+          <li>
+            <span>{{rentalUnitCosts.name}}</span>
+          </li>
+          <li *ngFor="let extra of rentalUnitCosts.extras">
+            <span>{{extra.name}}</span>
+          </li>
+        </ul>
+        <ul class="price-detail-list">
+          <li>
+            <span>CHF {{rentalUnitCosts.price}}.-</span>
+          </li>
+          <li *ngFor="let extra of rentalUnitCosts.extras">
+            <span>CHF {{extra.price}}.-</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="column">
+      <label>Total</label>
+      <label>CHF {{calcTotalPrice()}}.-</label>
+      <p-button label="Buchen" icon="pi pi-check" styleClass="p-button-raised" (click)="bookUnit()"></p-button>
+    </div>
+  </div>
+</p-card>

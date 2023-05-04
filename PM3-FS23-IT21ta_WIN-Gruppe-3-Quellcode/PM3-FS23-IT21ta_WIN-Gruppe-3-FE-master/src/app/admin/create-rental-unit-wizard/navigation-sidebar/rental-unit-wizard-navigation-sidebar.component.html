@@ -1,0 +1,6 @@
+<p-card header="{{title}}">
+  <div class="container">
+    <p-menu [model]="navigationMenuItems" styleClass="navigation-menu" class="w-full"></p-menu>
+    <p-button styleClass="p-button-raised" (click)="buttonClicked($event)">{{buttonText}}</p-button>
+  </div>
+</p-card>
